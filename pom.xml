@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId>
+  <artifactId>sonar-custom-java-rule</artifactId>
+  <version>1.0.0</version>
+  <packaging>sonar-plugin</packaging>
+
+  <properties>
+    <!-- SonarQube 7.8 官方兼容版本 -->
+    <sonar.version>7.8</sonar.version>
+    <java.plugin.version>5.14.0.18788</java.plugin.version> <!-- 实际存在的5.13后续版本 -->
+    <sonar.packaging.plugin.version>1.19.0.397</sonar.packaging.plugin.version> <!-- 可用版本 -->
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.sonarsource.sonarqube</groupId>
+      <artifactId>sonar-plugin-api</artifactId>
+      <version>${sonar.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.sonarsource.java</groupId>
+      <artifactId>java-frontend</artifactId>
+      <version>${java.plugin.version}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+        <artifactId>sonar-packaging-maven-plugin</artifactId>
+        <version>${sonar.packaging.plugin.version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <pluginKey>custom-java-rules</pluginKey>
+          <pluginName>Custom Java Rules</pluginName>
+          <pluginClass>com.example.rules.JavaRulesPlugin</pluginClass>
+          <pluginDescription>强制Java方法注释检查</pluginDescription>
+<!--          <license>MIT</license>-->
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

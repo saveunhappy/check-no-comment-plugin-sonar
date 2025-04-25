@@ -1,0 +1,12 @@
+<rule>
+    <key>MethodMustHaveComment</key>
+    <name>Java方法必须包含注释（Blocker级别）</name>
+    <description>强制要求所有Java方法必须有Javadoc注释</description>
+    <severity>BLOCKER</severity>
+    <type>BUG</type>
+    <!-- 必须添加以下字段 -->
+    <status>READY</status>
+    <scope>MAIN</scope>
+    <tag>convention</tag>
+    <internalKey>MethodMustHaveComment</internalKey> <!-- 新增 -->
+</rule>
